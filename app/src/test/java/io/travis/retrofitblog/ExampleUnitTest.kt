@@ -1,4 +1,4 @@
-package io.travis.RetroBlog
+package io.travis.retroblog
 
 import org.junit.Test
 

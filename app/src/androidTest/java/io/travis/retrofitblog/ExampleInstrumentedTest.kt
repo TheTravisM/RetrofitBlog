@@ -1,4 +1,4 @@
-package io.travis.RetroBlog
+package io.travis.retroblog
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

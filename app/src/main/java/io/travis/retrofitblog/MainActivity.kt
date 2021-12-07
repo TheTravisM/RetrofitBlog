@@ -1,9 +1,9 @@
-package io.travis.RetroBlog
+package io.travis.retroblog
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import io.travis.RetroBlog.databinding.ActivityMainBinding
+import io.travis.retroblog.databinding.ActivityMainBinding
 
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
