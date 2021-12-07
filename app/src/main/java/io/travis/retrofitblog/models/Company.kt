@@ -1,4 +1,4 @@
-package io.travis.retroblog.models
+package io.travis.retrofitblog.models
 
 data class Company(
     val name: String,

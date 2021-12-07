@@ -1,6 +1,6 @@
-package io.travis.retroblog.api
+package io.travis.retrofitblog.api
 
-import io.travis.retroblog.models.Post
+import io.travis.retrofitblog.models.Post
 import retrofit2.http.GET
 
 interface BlogApi {

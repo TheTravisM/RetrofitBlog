@@ -1,4 +1,8 @@
 package io.travis.retrofitblog.edit
 
-class ResultStatus {
+enum class ResultStatus {
+    IDLE,
+    WORKING,
+    SUCCESS,
+    ERROR
 }

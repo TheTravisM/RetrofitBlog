@@ -1,4 +1,4 @@
-package io.travis.retroblog.models
+package io.travis.retrofitblog.models
 
 data class User(
     val id: Int,
@@ -8,3 +8,5 @@ data class User(
     val company: Company,
     val website: String
     )
+
+// https://jsonplaceholder.typicode.com/users/
