@@ -1,5 +1,6 @@
 package io.travis.retrofitblog
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,9 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.travis.retrofitblog.databinding.ActivityMainBinding
+import io.travis.retrofitblog.detail.DetailActivity
 import io.travis.retrofitblog.models.Post
 
 private const val TAG = "MainActivity"
+const val EXTRA_POST_ID = "EXTRA_POST_ID"
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
@@ -22,12 +25,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        viewModel.posts.observe(this, Observer { posts ->
+            Log.i(TAG,"Number of Posts: ${posts.size}")
+            blogPosts.addAll(posts)
+            blogPostAdapter.notifyDataSetChanged()
+        })
         viewModel.isLoading.observe(this, Observer { isLoading ->
             Log.i(TAG, "isLoading $isLoading")
             binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         })
 
-        blogPostAdapter = BlogPostAdapter(this, blogPosts)
+        blogPostAdapter = BlogPostAdapter(this, blogPosts,
+            object : BlogPostAdapter.ItemClickListener {
+                override fun onItemClick(post: Post) {
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putExtra(EXTRA_POST_ID, post.id)
+                    startActivity(intent)
+                }
+        })
         binding.rvPosts.adapter = blogPostAdapter
         binding.rvPosts.layoutManager = LinearLayoutManager(this)
 

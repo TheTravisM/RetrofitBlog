@@ -9,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import io.travis.retrofitblog.EXTRA_POST_ID
 import io.travis.retrofitblog.databinding.ActivityDetailBinding
 import io.travis.retrofitblog.R
 import io.travis.retrofitblog.edit.EditActivity
@@ -24,13 +25,15 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val postId = intent.getIntExtra(EXTRA_POST_ID, -1)
 
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        val postId = 1
+
         viewModel.isLoading.observe(this, Observer { isLoading ->
             binding.detailProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
             binding.clContent.visibility = if (isLoading) View.GONE else View.VISIBLE
         })
+
         viewModel.post.observe(this, Observer { post ->
             binding.tvPostId.text = "Post #${post.id}"
             binding.tvTitle.text = post.title

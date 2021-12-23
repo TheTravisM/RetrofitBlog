@@ -197,3 +197,6 @@ https://www.linkedin.com/learning/android-development-retrofit-with-kotlin/inclu
 
 ## 4.1 : Retrieve data with Retrofit in an Android app (1:36)
 https://www.linkedin.com/learning/android-development-retrofit-with-kotlin/retrieve-data-with-retrofit-in-an-android-app?autoAdvance=true&autoSkip=true&autoplay=true&resume=false&u=76846204
+
+##4.3
+https://www.linkedin.com/learning/android-development-retrofit-with-kotlin/handle-failed-requests-within-the-coroutine?autoAdvance=true&autoSkip=true&autoplay=true&resume=false&u=76846204

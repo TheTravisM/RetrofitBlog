@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RetrofitBlog">
-        <activity android:name="io.travis.retrofitblog.edit.EditActivity" />
-        <activity android:name="io.travis.retrofitblog.detail.DetailActivity" />
-        <activity android:name="io.travis.retrofitblog.MainActivity">
+        <activity android:name=".edit.EditActivity" />
+        <activity android:name=".detail.DetailActivity" />
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
