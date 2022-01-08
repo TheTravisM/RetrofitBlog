@@ -200,3 +200,10 @@ https://www.linkedin.com/learning/android-development-retrofit-with-kotlin/retri
 
 ##4.3
 https://www.linkedin.com/learning/android-development-retrofit-with-kotlin/handle-failed-requests-within-the-coroutine?autoAdvance=true&autoSkip=true&autoplay=true&resume=false&u=76846204
+
+HTTP Response Codes
+1xx - informal
+2xx - request succeeded
+3xx - request being redirected or requires action
+4xx - client error
+5xx - server error

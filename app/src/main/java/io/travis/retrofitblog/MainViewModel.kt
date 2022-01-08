@@ -20,15 +20,28 @@ class MainViewModel : ViewModel() {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    private val _errorMessage = MutableLiveData<String?>(null)
+    val errorMessage: LiveData<String?>
+        get() = _errorMessage
+
     fun getPosts() {
         viewModelScope.launch {
             // -- Data Starts Loading, Loading is True
             _isLoading.value = true
-            val fetchedPosts = RetrofitInstance.api.getPosts()
-            Log.i(TAG, "Fetched Posts: $fetchedPosts")
-            _posts.value = fetchedPosts
-            // -- Once Data is done Loading, Loading is set to false
-            _isLoading.value = false
+            try {
+                // -- Networking Call
+                val fetchedPosts = RetrofitInstance.api.getPosts()
+                Log.i(TAG, "Fetched Posts: $fetchedPosts")
+                _posts.value = fetchedPosts
+                // -- Once Data is done Loading, Loading is set to false
+                _isLoading.value = false
+            } catch (e: Exception) {
+                _errorMessage.value = e.message
+                Log.e(TAG,"Exception $e")
+            } finally {
+                _isLoading.value = false
+            }
+
         }
     }
 }
